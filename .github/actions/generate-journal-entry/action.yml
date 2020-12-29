@@ -1,5 +1,5 @@
-name: 'Journal page generator'
-description: 'Generate new journal file every week day'
+name: 'Generate journal entry'
+description: 'Generate new journal file'
 author: 'Sound1ab'
 inputs:
   GH_TOKEN:
@@ -7,4 +7,4 @@ inputs:
     description: 'GitHub access token'
 runs:
   using: 'node12'
-  main: 'dist/index.js'
+  main: '../../../dist/index.js'

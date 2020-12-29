@@ -1,0 +1,8 @@
+name: 'Run linter heck'
+description: 'lint files with eslint'
+author: 'Sound1ab'
+runs:
+  using: 'composite'
+  steps:
+    - run: yarn lint
+      shell: bash

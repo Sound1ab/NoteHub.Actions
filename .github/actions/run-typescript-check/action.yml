@@ -1,0 +1,8 @@
+name: 'Run typescript check'
+description: 'Check for typescript errors'
+author: 'Sound1ab'
+runs:
+  using: 'composite'
+  steps:
+    - run: yarn ts
+      shell: bash

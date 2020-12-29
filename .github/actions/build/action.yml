@@ -1,0 +1,8 @@
+name: 'Build'
+description: 'Build src files with typescript compiler'
+author: 'Sound1ab'
+runs:
+  using: 'composite'
+  steps:
+    - run: yarn build
+      shell: bash

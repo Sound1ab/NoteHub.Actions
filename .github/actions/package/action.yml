@@ -1,0 +1,8 @@
+name: 'Package'
+description: 'Package built files into dist folder'
+author: 'Sound1ab'
+runs:
+  using: 'composite'
+  steps:
+    - run: yarn package
+      shell: bash
