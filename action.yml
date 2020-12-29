@@ -2,10 +2,10 @@ name: 'Journal page generator'
 description: 'Generate new journal file every week day'
 author: 'Sound1ab'
 inputs:
-  milliseconds: # change this
+  GH_TOKEN: # change this
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'GitHub access token'
+    default: ${{ github.token }}
 runs:
   using: 'node12'
   main: 'dist/index.js'
