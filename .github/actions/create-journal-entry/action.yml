@@ -5,6 +5,10 @@ inputs:
   GH_TOKEN:
     required: true
     description: 'GitHub access token'
+  repo:
+    required: true
+    description: 'GitHub access token'
+    default: ${{ secrets.REPO }}
 runs:
   using: 'node12'
-  main: '../../../dist/index.js'
+  main: '../../../dist-createJournalEntry/index.js'
