@@ -1,3 +1,3 @@
-export function getContent() {
+export function getFileHeader() {
   return `# ${new Date().toDateString()}`
 }
