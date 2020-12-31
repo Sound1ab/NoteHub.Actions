@@ -1,18 +1,18 @@
-import * as core from '@actions/core'
-import * as github from '@actions/github'
+import { getInput, setFailed } from '@actions/core'
 
 import { encodeToBase64 } from './encodeToBase64'
 import { getCommitMessage } from './getCommitMessage'
 import { getContent } from './getContent'
 import { getFilename } from './getFilename'
+import { getOctokit } from '@actions/github'
 
-async function run(): Promise<void> {
+export async function run(): Promise<void> {
   try {
-    const GH_TOKEN = core.getInput('GH_TOKEN')
+    const GH_TOKEN = getInput('GH_TOKEN')
 
-    const repo = core.getInput('REPO')
+    const repo = getInput('REPO')
 
-    const octokit = github.getOctokit(GH_TOKEN)
+    const octokit = getOctokit(GH_TOKEN)
 
     const {
       data: { login },
@@ -26,7 +26,7 @@ async function run(): Promise<void> {
       repo,
     })
   } catch (error) {
-    core.setFailed(error.message)
+    setFailed(error.message)
   }
 }
 
