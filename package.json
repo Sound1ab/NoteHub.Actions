@@ -8,7 +8,7 @@
     "build": "tsc",
     "lint": "eslint src/**/*.ts",
     "ts": "tsc --noEmit --pretty --noUnusedParameters --noUnusedLocals",
-    "package:create-journal-entry": "ncc build src/createJournalEntry/createJournalEntry.ts --minify --out dist-createJournalEntry",
+    "package": "ncc build --minify",
     "test": "jest",
     "codechecks": "yarn lint && yarn ts && yarn test"
   },
