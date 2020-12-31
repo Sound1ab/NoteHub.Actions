@@ -12,7 +12,7 @@ To use the action, you must create a `.github/workflows` directory and setup a [
 
 To use this template you will need to add the following secrets to your repository Notebook repository:
 
-* GH_TOKEN - **A personal access token. See [here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) on how to create one**
+* GH_TOKEN - A personal access token. See [here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) on how to create one
 * REPO - the repository name given to your Notebook, defaults to `NoteHub.Notebook`
 * ROOT_DIR - the directory containing your journal entries and journal template, defaults to `Journal`
 
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions/create-journal-entry
+      - uses:  Sound1ab/NoteHub.Actions@v1
         with:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           REPO: ${{ secrets.REPO }}
