@@ -9,5 +9,5 @@ export function getFilename() {
 
   const humanReadableDate = new Date().toDateString().replace(/ /gi, '_')
 
-  return `${year}/${month}/${day}-${humanReadableDate}`
+  return `${year}${month}${day}-${humanReadableDate}`
 }
