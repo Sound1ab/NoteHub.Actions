@@ -2,6 +2,7 @@ name: 'create-journal-entry'
 on:
   schedule:
     - cron: '1 */24 * * *'
+  workflow_dispatch:
 
 jobs:
   create-journal-entry:
