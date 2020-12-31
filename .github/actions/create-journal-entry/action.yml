@@ -1,14 +1,16 @@
-name: 'Generate journal entry'
+name: 'NoteHub actions'
 description: 'Generate new journal file'
 author: 'Sound1ab'
 inputs:
   GH_TOKEN:
     required: true
     description: 'GitHub access token'
-  repo:
+  REPO:
     required: true
-    description: 'GitHub access token'
-    default: ${{ secrets.REPO }}
+    description: 'Repo to generate journal file in'
+  COMMAND:
+    required: true
+    description: 'Command to execute'
 runs:
   using: 'node12'
-  main: '../../../dist-createJournalEntry/index.js'
+  main: '../../../dist/index.js'

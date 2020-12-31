@@ -1,8 +1,0 @@
-name: 'Install dependencies'
-description: 'Install and cache dependencies'
-author: 'Sound1ab'
-runs:
-  using: 'composite'
-  steps:
-    - run: yarn
-      shell: bash
