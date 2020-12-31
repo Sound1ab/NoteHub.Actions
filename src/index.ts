@@ -7,7 +7,7 @@ export async function run() {
   try {
     switch (getInput('COMMAND')) {
       case COMMANDS.CREATE_JOURNAL_ENTRY:
-        return createJournalEntry()
+        await createJournalEntry()
     }
   } catch (error) {
     setFailed(error.message)
