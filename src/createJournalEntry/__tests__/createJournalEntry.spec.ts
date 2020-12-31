@@ -43,7 +43,7 @@ describe('createJournalEntry', () => {
 
     expect(createOrUpdateFileContents).toBeCalledWith({
       content:
-        'IyBGcmkgTWF5IDAxIDIwMjAKICAKICAjIyBtb2NrIGhlYWRlcgogIAogIHNvbWUgbW9jayBjb250ZW50CiAgCiAgIyMgYW5vdGhlciBtb2NrIGhlYWRpbmcKICAKICA=',
+        'IyBGcmkgTWF5IDAxIDIwMjAKCiMjIG1vY2sgaGVhZGVyCiAgCiAgc29tZSBtb2NrIGNvbnRlbnQKICAKICAjIyBhbm90aGVyIG1vY2sgaGVhZGluZwogIA==',
       message: 'note(create file): Journal - Fri May 01 2020',
       owner: 'MOCK_LOGIN',
       path: 'ROOT_DIR/202041-Fri_May_01_2020.md',
@@ -68,7 +68,7 @@ describe('createJournalEntry', () => {
   )
 
   it.each([null, [], { content: undefined }])(
-    'should throw an error if data is %s',
+    'should pass only file header content if template is empty',
     async data => {
       ;(getOctokit as jest.Mock).mockImplementation(() => ({
         users: {
@@ -80,7 +80,15 @@ describe('createJournalEntry', () => {
         },
       }))
 
-      await expect(createJournalEntry()).rejects.toThrow('Template not found')
+      await createJournalEntry()
+
+      expect(createOrUpdateFileContents).toBeCalledWith({
+        content: 'IyBGcmkgTWF5IDAxIDIwMjA=',
+        message: 'note(create file): Journal - Fri May 01 2020',
+        owner: 'MOCK_LOGIN',
+        path: 'ROOT_DIR/202041-Fri_May_01_2020.md',
+        repo: 'REPO',
+      })
     }
   )
 })

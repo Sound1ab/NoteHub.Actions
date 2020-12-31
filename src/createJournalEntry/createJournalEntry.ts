@@ -5,6 +5,7 @@ import { getFileHeader } from './getFileHeader'
 import { getFilename } from './getFilename'
 import { getInput } from '@actions/core'
 import { getOctokit } from '@actions/github'
+import { getTemplate } from './getTemplate'
 
 export async function createJournalEntry() {
   const GH_TOKEN = getInput('GH_TOKEN')
@@ -19,22 +20,16 @@ export async function createJournalEntry() {
     data: { login },
   } = await octokit.users.getAuthenticated()
 
-  const { data } = await octokit.repos.getContent({
+  const template = await getTemplate({
+    octokit,
     owner: login,
     path: `${ROOT_DIR}/template.md`,
     repo: REPO,
   })
 
-  if (!data || Array.isArray(data) || !(data as any).content) {
-    throw new Error('Template not found')
-  }
-
-  const template = decodeFromBase64((data as any).content)
-
-  const content = `${getFileHeader()}
-  
-  ${template}
-  `
+  const content = template
+    ? `${getFileHeader()}\n\n${decodeFromBase64(template)}`
+    : getFileHeader()
 
   return octokit.repos.createOrUpdateFileContents({
     content: encodeToBase64(content),
