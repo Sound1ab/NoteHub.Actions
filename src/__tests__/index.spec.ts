@@ -26,10 +26,7 @@ describe('createJournalEntry', () => {
   it('should call createJournalEntry if command', async () => {
     await run()
 
-    expect(createJournalEntry).toBeCalledWith({
-      ghToken: 'GH_TOKEN',
-      repo: 'REPO',
-    })
+    expect(createJournalEntry).toBeCalledWith()
   })
 
   it('should call setFailed if an error is thrown', async () => {

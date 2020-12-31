@@ -3,14 +3,16 @@ description: 'Generate new journal file'
 author: 'Sound1ab'
 inputs:
   GH_TOKEN:
-    required: true
+    required: false
     description: 'GitHub access token'
   REPO:
-    required: true
+    required: false
     description: 'Repo to generate journal file in'
+    default: 'NoteHub.Notebook'
   COMMAND:
-    required: true
+    required: false
     description: 'Command to execute'
+    default: 'Journal'
 runs:
   using: 'node12'
   main: '../../../dist/index.js'
