@@ -12,7 +12,11 @@ inputs:
   COMMAND:
     required: false
     description: 'Command to execute'
+  ROOT_DIR:
+    required: false
+    description: 'Directory containing journal template'
     default: 'Journal'
+
 runs:
   using: 'node12'
   main: '../../../dist/index.js'
